@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title id="p-title">Parent</title>
+</head>
+
+<body>
+    <h1 id="page-title">Parent</h1>
+    <p>お客様番号：<span id="p-mid"></span></p>
+    <button id="p-btn">50% OFFクーポン適用</button><br>
+    <br>
+    <iframe src="./child.html" width="480" height="300" id="c-program"></iframe>
+
+    <p>メッセージ：<span id="p-message"></span></p>
+    <script>
+        (() => {
+            //変数
+            const member_id = "12345";
+
+            //親（自分）要素取得
+            const p_mid = document.getElementById("p-mid");
+            const p_btn = document.getElementById("p-btn");
+
+            //子要素取得
+            const c_program = document.getElementById("c-program");
+            // この時点では読み込まれていない可能性がある
+            // const c_price = c_program.contentWindow.document.getElementById("c-price");
+
+            //値設定（親）
+            p_mid.innerHTML = member_id;
+
+            //クーポン適用（子要素操作）
+            p_btn.addEventListener("click", () => {
+
+                //子要素の読み込みが完了してから実行する必要あり
+                const c_price = c_program.contentWindow.document.getElementById("c-price");
+                c_price.value = c_price.value * 0.5;
+            });
+
+
+        })();
+
+    </script>
+</body>
+
+</html>

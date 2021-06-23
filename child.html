@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Child</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="c-title">Child</h1>
+    会員番号：<input type="text" id="c-mid"><br>
+    商品：<input type="text" value="Apple" id="c-item"><br>
+    価格：<input type="text" value="200" id="c-price">円<br>
+    数量：<input type="text" value="1" id="c-amount">個<br>
+    <br>
+    <button id="c-btn">購入</button>
+    <script>
+        (() => {
+            //子（自分）要素取得
+            const c_mid = document.getElementById("c-mid");
+            const c_item = document.getElementById("c-item");
+            const c_price = document.getElementById("c-price");
+            const c_amount = document.getElementById("c-amount");
+            const c_btn = document.getElementById("c-btn");
+
+            //親要素取得
+            const p_mid = parent.document.getElementById("p-mid");
+            const p_message = parent.document.getElementById("p-message");
+
+            //会員番号表示
+            c_mid.value = p_mid.innerHTML;
+
+            //ボタンクリック
+            c_btn.addEventListener("click", () => {
+                const sum = c_price.value * c_amount.value;
+                const message = `${c_mid.value}さんが、${c_item.value}を${c_amount.value}個買いました。価格は${sum}円です。`;
+                // alert(message);
+                p_message.innerHTML = message;
+            })
+
+
+        })();
+    </script>
+</body>
+
+</html>
