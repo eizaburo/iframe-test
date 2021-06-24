@@ -11,16 +11,8 @@ const getMemberId = () => {
 
 //決済を実行
 const execPay = (mid, item, price, amount) => {
-
-    //子要素取得
-    const c_mid = document.getElementById("c-mid");
-    const c_item = document.getElementById("c-item");
-    const c_price = document.getElementById("c-price");
-    const c_amount = document.getElementById("c-amount");
-    const c_btn = document.getElementById("c-btn");
-
     //処理
-    const sum = c_price.value * c_amount.value;
+    const sum = price * amount;
     const message = `${mid}さんが、${item}を${amount}個買いました。価格は${sum}円です。from SDK。`;
     return message;
 }
