@@ -10,11 +10,11 @@
 <body>
     <h1 id="page-title">Parent</h1>
     <p>お客様番号：<span id="p-mid"></span></p>
-    <button id="p-btn">50% OFFクーポン適用</button><br>
+    <button id="p-btn">50% OFFクーポン適用</button>親から子<br>
     <br>
     <iframe src="./child.html" width="480" height="300" id="c-program"></iframe>
 
-    <p>メッセージ：<span id="p-message"></span></p>
+    <p>メッセージ：<span id="p-message">子から親</span></p>
     <script>
         (() => {
             //変数
@@ -39,8 +39,6 @@
                 const c_price = c_program.contentWindow.document.getElementById("c-price");
                 c_price.value = c_price.value * 0.5;
             });
-
-
         })();
 
     </script>

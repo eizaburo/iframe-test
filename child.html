@@ -19,29 +19,8 @@
     数量：<input type="text" value="1" id="c-amount">個<br>
     <br>
     <button id="c-btn">購入</button>
+    <script src="./sdk.js"></script>
     <script>
-
-        //SDK化？（下記を外部ライブラリ化して提供）
-        const getMemberId = () => {
-            const p_mid = parent.document.getElementById("p-mid");
-            return p_mid.innerHTML;
-        }
-
-        const execPay = (mid, item, price, amount) => {
-
-            //子要素取得
-            const c_mid = document.getElementById("c-mid");
-            const c_item = document.getElementById("c-item");
-            const c_price = document.getElementById("c-price");
-            const c_amount = document.getElementById("c-amount");
-            const c_btn = document.getElementById("c-btn");
-
-            //処理
-            const sum = c_price.value * c_amount.value;
-            const message = `${mid}さんが、${item}を${amount}個買いました。価格は${sum}円です。`;
-            return message;
-        }
-
         (() => {
             //子（自分）要素取得
             const c_mid = document.getElementById("c-mid");
@@ -63,10 +42,10 @@
                 const sum = c_price.value * c_amount.value;
                 const message = `${c_mid.value}さんが、${c_item.value}を${c_amount.value}個買いました。価格は${sum}円です。`;
                 // alert(message);
-                p_message.innerHTML = message;
+                // p_message.innerHTML = message;
 
                 //pay
-                // p_message.innerHTML = execPay(c_mid.value, c_item.value, c_price.value, c_amount.value);
+                p_message.innerHTML = execPay(c_mid.value, c_item.value, c_price.value, c_amount.value);
             })
 
 
